@@ -8,8 +8,7 @@ def continuous_movement(yaw, speed, pitch_min, pitch_max, rate_hz):
 
     with PanTiltDriver(start_identity=False, end_identity=False) as driver:
         while True:
-            driver.set_pan(yaw, speed)
-            driver.set_tilt(pitch, speed)
+            driver.set_pose(int(yaw), int(pitch), int(speed))
             
             print("Current Yaw: {}, Pitch: {}, Speed: {}".format(yaw, pitch, speed))
             
@@ -26,7 +25,7 @@ def continuous_movement(yaw, speed, pitch_min, pitch_max, rate_hz):
 if __name__ == '__main__':
     try:
         while True:
-            yaw = float(input("Input the yaw value (-55 to 55) Set -16.0 to align the platform well: "))
+            yaw = float(input("Input the yaw value (-55 to 55) Set -18.0 to align the platform well: "))
             if(yaw > 55 or yaw < -55 or not yaw):
                 print("Invalid yaw value. Try again.")
             else:

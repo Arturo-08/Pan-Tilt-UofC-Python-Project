@@ -2,7 +2,7 @@ import time
 from iqr_pan_tilt.pan_tilt_driver import PanTiltDriver
 
 def slowly_movement(rate_hz=0.166666667):
-    yaw = -16.0
+    yaw = -18.0
     speed = 1
     pitch_min = -15.0
     pitch_max = 15.0
@@ -12,8 +12,7 @@ def slowly_movement(rate_hz=0.166666667):
 
     with PanTiltDriver(start_identity=False, end_identity=False) as driver:
         while True:
-            driver.set_pan(yaw, speed)
-            driver.set_tilt(pitch, speed)
+            driver.set_pose(int(yaw), int(pitch), int(speed))
             
             print("Current Yaw: {}, Pitch: {}, Speed: {}".format(yaw, pitch, speed))
             
